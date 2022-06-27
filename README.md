@@ -1,4 +1,4 @@
-<h1 align="center"><a href="https://github.com/KugelSchreibe/hangman/" target="_blank">Магазин</a> 
+<h1 align="center"><a href="https://github.com/KugelSchreibe/product_shop/" target="_blank">Магазин</a> 
 <h3 align="center">A Ruby Console Shop</h3>
 
 ## Запуск консольного проложения
