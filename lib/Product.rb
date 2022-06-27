@@ -10,8 +10,8 @@ class Product
     @quantity = data[:quantity].to_i
   end
 
-  def buy(amount = 1)
-    @quantity -= amount
+  def buy()
+    @quantity -= 1
     itself
   end
 
