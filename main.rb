@@ -1,12 +1,10 @@
-require_relative 'lib/Book'
-require_relative 'lib/Movie'
 require_relative 'lib/ProductCollection'
+require_relative 'lib/ProductBasket'
 
 product_collection = ProductCollection.new(ProductCollection.from_dir("#{Dir.pwd}/data"))
 
 user_choice = nil
-sum_of_money = 0
-purchased = []
+product_basket = ProductBasket.new
 
 until user_choice == 0
   puts "Что хотите купить:"
@@ -20,21 +18,21 @@ until user_choice == 0
   puts
 
   user_choice = STDIN.gets.to_i
-  if user_choice <= product_collection.to_a.size && user_choice.positive?
-    sum_of_money += product_collection.to_a[user_choice - 1].buy
-    purchased << product_collection.to_a[user_choice - 1]
+  if user_choice <=  product_collection.to_a.size && user_choice.positive?
+    selected_product = product_collection.to_a[user_choice - 1].buy
+    product_basket.add_product(selected_product.price, selected_product)
 
     puts
-    puts "Вы выбрали: #{product_collection.to_a[user_choice - 1]}"
+    puts "Вы выбрали: #{selected_product}"
     puts
-    puts "Всего товаров на сумму: #{sum_of_money}"
+    puts "Всего товаров на сумму: #{product_basket.total_price}"
     puts
   end
 end
 
 puts "Вы купили:"
 puts
-purchased.each { |product| puts "#{product}" }
+product_basket.to_a.each { |product| puts "#{product}" }
 puts
-puts "С Вас - #{sum_of_money}. Спасибо за покупки!"
+puts "С Вас - #{product_basket.total_price}. Спасибо за покупки!"
 puts

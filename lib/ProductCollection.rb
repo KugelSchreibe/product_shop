@@ -21,7 +21,7 @@ class ProductCollection
   end
 
   def to_a()
-    @products
+    @products.reject { |product| product.quantity.zero? }
   end
 
   def sort()

@@ -12,7 +12,7 @@ class Product
 
   def buy(amount = 1)
     @quantity -= amount
-    @price * amount
+    itself
   end
 
   def update(new_data)
